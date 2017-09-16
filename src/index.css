@@ -22,7 +22,19 @@ ul li {
     overflow: hidden;
     line-height: 1.5;
     border-bottom: 1px dotted #ddd;
+    color: #999;
 }
+
+.list li:hover {
+    color: #000;
+}
+
+.list .resort {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
 
 .list .vocabulary {
     float: left;
@@ -30,6 +42,7 @@ ul li {
 
 .list .note {
     float: right;
+    cursor: pointer;
 }
 
 .list .edit {
@@ -38,4 +51,17 @@ ul li {
     margin: 3px;
     outline: none;
     text-indent: 3px;
+    line-height: 24px;
+    height: 24px;
+}
+
+.list li:hover .del {
+    display: block;
+}
+.list .del {
+    display: none;
+    float: left;
+    margin-left: 10px;
+    color: #ccc;
+    cursor: pointer;
 }
