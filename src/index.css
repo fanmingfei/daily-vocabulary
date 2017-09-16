@@ -1,0 +1,41 @@
+ul li {
+    list-style: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.list-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+.list {
+    flex-grow: 1;
+    min-width: 200px;
+    max-width: 400px;
+    padding: 20px;
+    margin: 10px;
+}
+
+.list li {
+    overflow: hidden;
+    line-height: 1.5;
+    border-bottom: 1px dotted #ddd;
+}
+
+.list .vocabulary {
+    float: left;
+}
+
+.list .note {
+    float: right;
+}
+
+.list .edit {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 3px;
+    outline: none;
+    text-indent: 3px;
+}
