@@ -105,7 +105,7 @@ function createList(allDay) {
             list.append(createVocabulary([item.get('vocabulary'), item.get('note'), item.get('objectId')]));
         })
         if (i == 0) {
-            const edit = document.createElement('div');
+            const edit = document.createElement('input');
             edit.classList.add('edit')
             edit.setAttribute('contenteditable', true);
             div.append(edit)
