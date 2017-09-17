@@ -45,6 +45,10 @@ ul li {
     cursor: pointer;
 }
 
+.list .edit-box {
+    display: flex;
+}
+
 .list .edit {
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -53,7 +57,12 @@ ul li {
     text-indent: 3px;
     line-height: 24px;
     height: 24px;
-    width: 100%;
+    width: 90%;
+}
+
+.list .submit {
+    float: right;
+    outline: none;
 }
 
 .list li:hover .del {
