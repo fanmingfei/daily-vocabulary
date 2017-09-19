@@ -10,7 +10,7 @@ AV.init({
 var Vocabulary = AV.Object.extend('vocabulary');
 
 const checkName = 'look';
-const eventType = isMobile() ? 'touchEnd' : 'click';
+const eventType = isMobile() ? 'touchend' : 'click';
 
 
 bindEvent();
@@ -33,7 +33,7 @@ function bindEvent() {
     addEventListener(eventType, 'resort', (e) => {
         const ul = e.target.parentElement.querySelector('ul');
         const items = [...ul.querySelectorAll('li')];
-        items.sort(()=>{
+        items.sort(() => {
             return Math.random() - 0.5 < 0 ? -1 : 1
         });
         ul.innerHTML = '';
@@ -50,13 +50,13 @@ function lisener(eventName) {
     const map = {};
     if (!map[eventName]) {
         document.addEventListener(eventName, function(e) {
-            e.target.classList.forEach(clsName=>{
+            e.target.classList.forEach(clsName => {
                 map[eventName] && map[eventName][clsName] && map[eventName][clsName].forEach(func => func(e));
             });
         });
     }
     map[eventName] = {};
-    return className=>{
+    return className => {
         map[eventName][className] = [];
         return func => map[eventName][className].push(func);
     }
@@ -80,7 +80,7 @@ function bindEdit() {
     });
 }
 
-function sendVocabulary () {
+function sendVocabulary() {
     const edit = document.querySelector('.edit');
     const content = edit.value;
     const [key, value] = content.split(' ');
@@ -96,7 +96,7 @@ function sendVocabulary () {
         date: getDate(),
         timeStr: new Date().getTime()
     }).then((x) => {
-        document.querySelector('.today').append(createVocabulary([...content.split(' '), ...x.get('objectId')]));
+        document.querySelector('.today').append(createVocabulary([...content.split(' '), ...[x.get('objectId')]]));
         edit.value = '';
     });
 }
@@ -164,14 +164,16 @@ function getDate(d = 0) {
 }
 
 function isMobile() {
-    var sUserAgent = navigator.userAgent.toLowerCase();
-    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-    var bIsAndroid = sUserAgent.match(/android/i) == "android";
-    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-    return [bIsIpad,bIsIphoneOs,bIsMidp,bIsUc7,bIsUc,bIsAndroid,bIsCE,bIsWM].indexOf(false) == -1;
+    if (navigator.userAgent.match(/Android/i) ||
+        navigator.userAgent.match(/webOS/i) ||
+        navigator.userAgent.match(/iPhone/i) ||
+        navigator.userAgent.match(/iPad/i) ||
+        navigator.userAgent.match(/iPod/i) ||
+        navigator.userAgent.match(/BlackBerry/i) ||
+        navigator.userAgent.match(/Windows Phone/i)
+    ) {
+        return true;
+    } else {
+        return false;
+    }
 }
