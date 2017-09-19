@@ -74,7 +74,7 @@ function bindEdit() {
         }
     });
 
-    addEventListener(eventType, 'submit', function() {
+    addEventListener(eventType, 'submit', function(e) {
         e.preventDefault();
         sendVocabulary();
     });
